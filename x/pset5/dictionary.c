@@ -126,65 +126,38 @@ bool load(const char *dictionary)
     return true;
 }
 
-/**
- * Returns number of words in dictionary if loaded else 0 if not yet loaded.
- */
+
 unsigned int size(void)
 {
     int sizeVoc = counter;
     return sizeVoc;
 }
-
-/**
- * Unloads dictionary from memory. Returns true if successful else false.
- */
-
 bool unload(void)
 {
-    // call freenode and pass the root of the trie and
-    // start with the last position.
     return freeNodes(root, 26);
 }
 
-
-/**
- * Unloads a node from memory starting at the given position.  
- * Returns true if successful else false.
- */
 bool freeNodes(node* freeNode, int possition)
 {
 
-    // check if the last position has not been reached
     if (possition >= 0)
     {
-        // if the child node is not null        
         if (freeNode->children[possition] != NULL)
         {
-            // call freenode recursively to free the child node starting 
-            // at the last position
             freeNodes(freeNode->children[possition], 26);
             
-            // free the child node
             free(freeNode->children[possition]);
         }
-       
-        // if parent node is not null        
+              
         if (freeNode != NULL)
         {
-            // call freenode recursively to free node starting 
-            // one position (letter) before the current postion
-            freeNodes(freeNode, possition - 1);
+           freeNodes(freeNode, possition - 1);
         }
      }
-
-    // if the free node is the same as root and all postions have been
-    // checked, free the root node
     if (freeNode == root && possition == 0)
     {
         free(root);
     }
-    
-    // that's all folks
     return true;
 }    
 
