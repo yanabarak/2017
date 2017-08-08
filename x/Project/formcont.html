@@ -1,0 +1,155 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Support For Animal</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+    <link rel="stylesheet" href="css/normalize.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/jquery.fancybox.css">
+    <link rel="stylesheet" href="css/flexslider.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/queries.css">
+    <link rel="stylesheet" href="css/etline-font.css">
+    <link rel="stylesheet" href="bower_components/animate.css/animate.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    
+</head>
+<body id="top">
+    <!--[if lt IE 8]>
+       <![endif]-->
+    <section>
+        <section class="navigation formnav">
+            <header>
+                <div class="header-content">
+                    <div class="logo"><a href="#"><img src="img/sedna-logo.png" alt="Sedna logo"></a></div>
+                    <div class="header-nav">
+                        <nav>
+                            <ul class="primary-nav">
+                                <li><a href="index.html">Про Фонд</a></li>
+                                <li><a href="gallery.html">Новини</a></li>
+                                <li><a href="formcont.html">Контакти</a></li>
+                                <li><a href="volonter.html">Волонтери</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="navicon">
+                        <a class="nav-toggle" href="#"><span></span></a>
+                    </div>
+                </div>
+            </header>
+        </section>
+        
+    </section>
+    
+ 
+<section class="sign-up section-padding text-center" id="download">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <h3>Маєте питання чи пропозиції? Напишіть нам.</h3>
+                    <form class="signup-form" action="#" method="POST" role="form" id="feedback-form">
+                        <div class="form-input-group">
+                            <i class="fa fa-envelope"></i><input type="text" class="" placeholder=" Ваш email " required name="contactFF" id="contactFF">
+                        </div>
+                         <div class="form-input-group">
+                            <i class="fa fa-user"></i><input type="text" name="nameFF" id="nameFF" required placeholder=" Ваше ім'я " x-autocompletetype="name">
+                        </div>
+                        <div class="form-input-group form-textarea">
+                            <i class="fa fa-pencil"></i><textarea name="messageFF" id="messageFF" placeholder=" Ваше повідомлення "></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-fill sign-up-btn" id="vol"> Надіслати </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+
+            document.getElementById('feedback-form').addEventListener('submit', function(evt){
+
+              var http = new XMLHttpRequest(), f = this;
+
+              evt.preventDefault();
+
+              http.open("POST", "contacts.php", true);
+
+              http.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+              http.send("nameFF=" + f.nameFF.value + "&contactFF=" + f.contactFF.value + "&messageFF=" + f.messageFF.value);
+
+              http.onreadystatechange = function() {
+
+                if (http.readyState == 4 && http.status == 200) {
+
+                  alert(http.responseText + ', Дякуємо! Ми зв\'яжемось з Вами пізніше!');    
+
+                  f.messageFF.removeAttribute('value'); // очистить поле сообщения (две строки)
+
+                  f.messageFF.value='';
+
+                }
+
+              }
+
+              http.onerror = function() {
+
+                alert('Виникли проблеми. Данні не були передані.');
+
+              }
+
+            }, false);
+
+      </script>
+
+<footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-push-6">
+                    <div class="footer-links">
+                        <a href="#" class="twitter-share"><i class="fa fa-twitter"></i></a> <a href="#" class="facebook-share"><i class="fa fa-facebook"></i></a>
+                        <img src="dogs.gif" class="dogs hidden-xs hidden-sm hidden-md">
+                        
+                    </div>                    
+                </div>
+
+                <div class="col-md-6 col-md-pull-6">
+                    <div class="footer-links">
+                        <ul class="footer-group">
+                            <li><a href="index.html">Про фонд</a></li>
+                            <li><a href="gallery.html">Новини</a></li>
+                            <li><a href="formcont.html">Контакти</a></li>
+                            <li><a href="volonter.html">Волонтери</a></li>
+                        </ul>
+                        <p>Copyright © 2017 <a href="#">Support for Animals</a><br>
+                        Дизайн та створення - <a href="#">Barabaraks.</a></p>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    </footer>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+    <script src="bower_components/retina.js/dist/retina.js"></script>
+    <script src="js/jquery.fancybox.pack.js"></script>
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
+    <script src="js/jquery.flexslider-min.js"></script>
+    <script src="bower_components/classie/classie.js"></script>
+    <script src="bower_components/jquery-waypoints/lib/jquery.waypoints.min.js"></script>
+
+</body>
+</html>
